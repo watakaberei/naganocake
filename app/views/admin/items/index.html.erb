@@ -1,1 +1,16 @@
 <h1>商品一覧</h1>
+
+<%= link_to "新規登録",new_admin_item_url %>
+
+<% @items.each do |item| %>
+
+<p>商品名</p>
+<%= item.name %>
+
+<p>税抜価格</p>
+<%= item.price %>
+
+<p>ジャンル</p>
+<%= item.genre_id %>
+
+<% end %>
