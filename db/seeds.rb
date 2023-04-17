@@ -33,3 +33,7 @@ Genre.create!(
 Genre.create!(
    name: "シュークリーム",
 )
+
+Admin.create!(
+   email: "email@email", password: "password"
+)
