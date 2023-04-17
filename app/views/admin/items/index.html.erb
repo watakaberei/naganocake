@@ -4,13 +4,16 @@
 
 <% @items.each do |item| %>
 
+<p>商品id</p>
+<%= item.id %>
+
 <p>商品名</p>
-<%= item.name %>
+<%= link_to item.name, "items/#{item.id}" %>
 
 <p>税抜価格</p>
-<%= item.price %>
+<%= item.price_without_tax %>
 
 <p>ジャンル</p>
-<%= item.genre_id %>
+<%= item.genre.name %>
 
 <% end %>
