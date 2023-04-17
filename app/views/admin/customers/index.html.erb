@@ -2,10 +2,11 @@
 
 <% @customers.each do |customer| %>
 <p>氏名</p>
+    <%= link_to admin_customer_path(customer.id) do %>
     <%= customer.last_name %>
     <%= customer.first_name %>
-    <%= link_to customer.last_name, "customers/#{customer.id}" %>
-    
+    <% end %>
+
 <p>メールアドレス</p>
     <%= customer.email %>
 
