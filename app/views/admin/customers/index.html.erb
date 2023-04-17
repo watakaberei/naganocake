@@ -1,16 +1,18 @@
 <h1>会員ページ</h1>
 
+<% @customers.each do |customer| %>
 <p>氏名</p>
-<%= @customer.last_name %>
-<%= @customer.first_name %>
-
+    <%= customer.last_name %>
+    <%= customer.first_name %>
+    
 <p>メールアドレス</p>
-<%= @customer.email %>
+    <%= customer.email %>
 
 <p>ステータス</p>
-<% if customers.is_deleted == false %>
-有効
-<% else %>
-無効
-<% end %>
+    <% if customer.is_deleted == false %>
+    有効
+    <% else %>
+    無効
+    <% end %>
 
+<% end %>
