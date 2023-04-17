@@ -1,19 +1,40 @@
-<h1>商品一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <h2>商品一覧</h2>
+    </div>
+    <div class="text-right">
+      <%= link_to "新規登録",new_admin_item_url %>
+    </div>
+  </div>
 
-<%= link_to "新規登録",new_admin_item_url %>
 
-<% @items.each do |item| %>
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品id</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, "items/#{item.id}" %></td>
+            <td><%= item.price_without_tax %></td>
+            <td><%= item.genre.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>商品id</p>
-<%= item.id %>
 
-<p>商品名</p>
-<%= link_to item.name, "items/#{item.id}" %>
 
-<p>税抜価格</p>
-<%= item.price_without_tax %>
 
-<p>ジャンル</p>
-<%= item.genre.name %>
-
-<% end %>
