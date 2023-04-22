@@ -6,5 +6,9 @@ class Public::HomesController < ApplicationController
   def about
   end
   
+  private
+  def home_params
+    params.require(:home).permit(:image)  
+  end
 end
 
