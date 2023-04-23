@@ -1,0 +1,11 @@
+<h2>商品一覧</h2>
+
+<% @items.each do |item| %>
+
+<%= image_tag item.image, size: "280x200" %>
+<div>
+<%= link_to item.name, "items/#{item.id}" %>
+<%= item.price_without_tax %>円
+</div>
+
+<% end %>
