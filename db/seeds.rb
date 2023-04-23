@@ -11,7 +11,7 @@ Genre.create!(
 )
 
 Genre.create!(
-   name: "クッキー",
+   name: "焼菓子",
 )
 
 Genre.create!(
@@ -19,19 +19,19 @@ Genre.create!(
 )
 
 Genre.create!(
+   name: "プリン",
+)
+
+Genre.create!(
+   name: "パン",
+)
+
+Genre.create!(
    name: "アイスクリーム",
 )
 
 Genre.create!(
-   name: "タルト",
-)
-
-Genre.create!(
-   name: "フランスパン",
-)
-
-Genre.create!(
-   name: "シュークリーム",
+   name: "その他",
 )
 
 Admin.create!(
