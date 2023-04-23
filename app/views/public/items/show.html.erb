@@ -8,6 +8,15 @@
 <%= @item.introduction %>
 </div>
 <div>
-￥<%= @item.price_without_tax %>円
+￥<%= (@item.price_without_tax*1.1).floor.to_s(:delimited, delimiter: ',') %>円(税込価格)
 </div>
 
+<%= form_with model: @cart_item, url: cart_items_path, method: :post  do |f| %>
+
+<%= f.hidden_field :item_id, :value => @item.id %>
+
+<%= f.select :amount, [["1個", 1], ["2個", 2],  ["3個", 3], ["4個", 4],["5個", 5] ], :prompt => "個数選択" %>
+
+<%= f.submit "カートに入れる" %>
+
+<% end %>
