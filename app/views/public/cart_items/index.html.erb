@@ -6,12 +6,16 @@
 <%= cart_item.item.name %>
 
 <p>単価(税込)</p>
-<%= (cart_item.item.price_without_tax * 1.1).floor %>円
+<%= cart_item.item.price_without_tax %>円
 
 <p>数量</p>
 <%= cart_item.amount %>
 
 <p>小計</p>
-<%= (cart_item.item.price_without_tax * 1.1).floor * cart_item.amount %>
+<%= cart_item.subtotal %>
+
+<% @total_price = @total_price + (cart_item.item.price_without_tax * 1.1).floor * cart_item.amount %>
 
 <% end %>
+<p>合計金額</p>
+<%= @total_price %>
