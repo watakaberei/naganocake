@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
-      redirect_to orders_confirm_path(@order)
+      redirect_to orders_complete_path
   end
 
   def confirm
@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
@@ -32,8 +32,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-		order = Order.new(order_params)
+		order = Order.new(params[:order])
 		order.save
+  end
+
+  def index
+    @orders = Orders.all(current_customer)
+  end
+
+  def show
   end
 
   private
