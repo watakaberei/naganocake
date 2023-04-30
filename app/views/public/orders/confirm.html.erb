@@ -1,0 +1,42 @@
+<h3>注文情報確認</h3>
+
+<%#= f.hidden_field :cart_item_id, :value => @cart_item.id %>
+<% @cart_items.each do |cart_item| %>
+
+<p>商品名</p>
+<%= cart_item.item.name %>
+
+<p>単価(税込)</p>
+<%= cart_item.item.price_without_tax %>円
+
+<p>数量</p>
+<%= cart_item.amount %>
+
+<p>小計</p>
+<%= cart_item.subtotal %>
+
+<% @total_price = @total_price + (cart_item.item.price_without_tax * 1.1).floor * cart_item.amount %>
+
+<% end %>
+
+<p>配送料</p>
+<%= @order.shipping_cost %>
+
+<p>合計</p>
+<%= @total_price %>
+
+<p>請求額</p>
+<%= @order.shipping_cost + @total_price %>
+
+<%= form_with model: @order, url: orders_complete_path, method: :post do |f| %>
+<%= f.hidden_field :order_id, :value => @order.id %>
+<h5>支払方法</h5>
+<%=  @order.payment_method_i18n %>
+
+<h5>お届け先</h5>
+<%= @order.postal_code %>
+<%= @order.address %>
+<%= @order.name %>
+
+<%= f.submit "注文を確定する" %>
+<% end %>
