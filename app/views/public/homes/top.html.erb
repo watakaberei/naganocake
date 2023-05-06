@@ -1,8 +1,15 @@
-<h1>naganocake</h1>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+        <h1>naganocake</h1>
+      </div>
+    </div>
+  </div>
 
-  <div class="main-visual">
-    <div class="main-visual-content">
-      <p class="main-visual-text">
+  <div class="row">
+    <div class="mx-auto">
+      <p>
         ようこそ、ながのCAKEへ!<br />
         このサイトは、ケーキ販売のECサイトになります。<br />
         会員でない方も商品の閲覧ができますが、<br />
@@ -10,7 +17,22 @@
       </p>
     </div>
   </div>
+</div>
 
-  <h4>新着商品</h4>
-  <p>画像</p>
-  <%= image_tag 'クッキー', size: "200x200" %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h2>Items</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% @items.each do |item| %>
+    <div class="col-4">
+      <%= image_tag item.image, size: "180x130" %>
+      <%= link_to item.name, "items/#{item.id}" %>
+      <%= item.price_without_tax %>円
+    </div>
+    <% end %>
+  </div>
+</div>
