@@ -5,16 +5,24 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
       admin_root_path
+    when Customer
+      root_path
     end
   end
-  
-  def after_sign_out_path_for(resource)
-    about_path
+
+#サインアップ後の遷移先を指定する方法
+
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin
+        new_admin_session_path
+    else resource_or_scope == :customer
+        root_path
+    end
   end
-  
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :adress, :telephone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
   end
 end

@@ -4,15 +4,14 @@
       <h2>商品新規登録</h2>
     </div>
   </div>
-</div>
 
 <div class="row">
   <div class="mx-auto">
+    <%= form_with model: @item,url: admin_items_path, method: :post do |f| %>
     <table class="table table-borderless">
       <tbody>
-        <%= form_with model: @item,url: admin_items_path do |f| %>
         <tr>
-          <th>商品</th>
+          <th>商品画像</th>
           <td><%= f.file_field :image, accept: "image/*" %></td>
         </tr>
         <tr>
@@ -44,12 +43,12 @@
           <th></th>
           <td><%= f.submit '新規登録', class:"btn btn-success" %></td>
         </tr>
-        <% end %>
       </tbody>
     </table>
+    <% end %>
   </div>
 </div>
-
+</div>
 
 
 

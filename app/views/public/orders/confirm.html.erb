@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <% @cart_items.each do |cart_item| %>
+
   <div class"row">
 
     <div class="col-lg-8">
@@ -20,13 +20,15 @@
           </tr>
         </thead>
         <tbody>
+        <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.price_without_tax * 1.1 %>円</td>
-            <td><%= cart_item.amount %></td>
+            <td><%= (cart_item.item.price_without_tax * 1.1).floor %>円</td>
+            <td><%= cart_item.amount %>個</td>
             <td><%= cart_item.subtotal %>円</td>
             <% @total_price = @total_price + (cart_item.item.price_without_tax * 1.1).floor * cart_item.amount %>
           </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
@@ -48,7 +50,7 @@
       </table>
     </div>
   </div>
-  <% end %>
+
 
   <%= form_with model: @order, url: orders_path do |f| %>
   <%= f.hidden_field :order_id, :value => @order.id %>

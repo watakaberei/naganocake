@@ -12,7 +12,7 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+
   <div class="row">
     <div class="col-lg-3 mx-auto">
       <div class="field">
@@ -34,21 +34,33 @@
       <div>
         <div class="actions">
           <%= f.submit "ログイン", class:"btn btn-primary" %>
-        </div>        
+        </div>
       </div>
     </div>
   </div>
   <% end %>
-  
+
   <div class="row">
     <div class="col-md-10 mx-auto">
       <p>※会員登録がお済みでない方※</p>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-5 mx-auto">
       <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <p>※管理者の方※</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <p><%= link_to "こちら", new_admin_session_path %>からログインを行ってください。</p>
     </div>
   </div>
 </div>

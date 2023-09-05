@@ -11,6 +11,10 @@
     <table class="table table-borderless">
       <tbody>
         <tr>
+          <th></th>
+          <td><%= image_tag @item.image, size: "280x200" %></td>
+        </tr>
+        <tr>
           <th>商品名</th>
           <td><%= @item.name %></td>
         </tr>
@@ -23,8 +27,10 @@
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <th>税抜価格</th>
-          <td><%= @item.price_without_tax %>円</td>
+          <th>税込価格(税抜価格)</th>
+          <td><%= (@item.price_without_tax * 1.1).floor %>円
+              (<%= @item.price_without_tax %>円)
+          </td>
         </tr>
         <tr>
           <th></th>
@@ -34,7 +40,6 @@
     </table>
   </div>
 </div>
-
 
 
 

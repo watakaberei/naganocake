@@ -16,8 +16,9 @@ class Public::OrdersController < ApplicationController
         @order_detail.price = cart_item.item.price_without_tax
         @order_detail.amount = cart_item.amount
         @order_detail.save
-        redirect_to orders_complete_path
       end
+        @cart_items.destroy_all
+        redirect_to orders_complete_path
     end
   end
 
@@ -52,6 +53,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+		@order = current_customer.orders.find(params[:id])
+		@order.shipping_cost = 800
   end
 
   private

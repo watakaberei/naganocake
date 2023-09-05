@@ -1,11 +1,27 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-5">
+      <h4>商品一覧</h4>
+    </div>
+  </div>
 
-<% @items.each do |item| %>
+  <div class="row mt-5">
+    <% @items.each do |item| %>
+    <div class="mx-auto">
+      <%= link_to item_path(item) do %>
+      <%= image_tag item.image, size: "180x130" %>
+      <% end %>
+      <div>
+      <%= link_to item.name, item_path(item) %>
+      <%= item.price_without_tax %>円
+      </div>
+    </div>
+    <% end %>
+  </div>
 
-<%= image_tag item.image, size: "280x200" %>
-<div>
-<%= link_to item.name, "items/#{item.id}" %>
-<%= item.price_without_tax %>円
+  <div class="row mt-5">
+    <div class="mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
 </div>
-
-<% end %>

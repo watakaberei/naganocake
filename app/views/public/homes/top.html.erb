@@ -1,7 +1,7 @@
 <div class="jumbotron" style="background-image: url(<%= image_url '背景画像2.jpg' %>);">
   <div class="container">
-    <div class="row mb-5">
-      <div class="mx-auto">
+    <div class="my-3 h3">
+      <div class="d-flex align-items-center justify-content-center">
         <h1>
           <strong>naganocake</strong>
         </h1>
@@ -27,9 +27,8 @@
       <h2>New Items</h2>
     </div>
   </div>
-
   <div class="row">
-    <% @items.each do |item| %>
+    <% @items.last(4).each do |item| %>
     <div class="mx-auto">
       <%= image_tag item.image, size: "180x130" %>
       <div>

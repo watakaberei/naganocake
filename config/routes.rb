@@ -8,6 +8,21 @@ devise_for :customers,skip: [:passwords], controllers: {
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
+    
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
+
+    resources :addresses
+    resources :items
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items
+    patch '/cart_items' => 'cart_items#update'
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/complete' => 'orders#complete'
+    resources :orders
   end
 
 # 管理者用
